@@ -1,0 +1,41 @@
+server:
+  port: 8777
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: cloud-picture-backend
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud_picture
+    username: root
+    password: root
+
+mybatis-plus:
+  configuration:
+    # 是否自动转为驼峰式
+    map-underscore-to-camel-case: false
+    # 在开发环境下打印日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      logic-delete-field: isDeleted # 逻辑删除字段(默认为 is_deleted)
+      logic-delete-value: 1 # 逻辑删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+knife4j:
+  enable: true
+  openapi:
+    title: 接口文档
+    description: 描述
+    concat: Jacky
+    version: 0.1
+    group:
+      default1:
+        group-name: 默认分组
+        api-rule: package # API 分组的规则类型，这里是按包（package）进行分组
+        api-rule-resources:
+          - top.fexample.cloudpicturebackend.controller
