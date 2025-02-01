@@ -34,8 +34,7 @@ knife4j:
     concat: Jacky
     version: 0.1
     group:
-      default1:
-        group-name: 默认分组
+      default:
         api-rule: package # API 分组的规则类型，这里是按包（package）进行分组
         api-rule-resources:
           - top.fexample.cloudpicturebackend.controller

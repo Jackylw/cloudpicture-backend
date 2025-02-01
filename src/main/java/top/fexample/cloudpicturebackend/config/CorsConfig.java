@@ -21,12 +21,12 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .exposedHeaders("*");
-        /*
-          .allowCredentials(true)  // 允许发送 Cookie
-                          .allowedOrigins("https://trusteddomain.com")  // 只允许特定的域名
-                          .allowedMethods("GET", "POST")  // 只允许 GET 和 POST 方法
-                          .allowedHeaders("Content-Type", "Authorization")  // 只允许常见请求头
-                          .exposedHeaders("Authorization", "X-Request-Id");  // 只暴露必要的响应头
-         */
+/*        registry.addMapping("/api/**")  // 限制跨域路径为 /api/**
+                .allowCredentials(true)  // 允许发送 Cookie
+                .allowedOrigins("https://trusteddomain.com")  // 只允许特定的域名
+                .allowedMethods("GET", "POST")  // 只允许 GET 和 POST 方法
+                .allowedHeaders("Content-Type", "Authorization")  // 只允许常见请求头
+                .exposedHeaders("Authorization", "X-Request-Id");  // 只暴露必要的响应头
+*/
     }
 }
