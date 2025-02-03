@@ -2,7 +2,6 @@ server:
   port: 8777
   servlet:
     context-path: /api
-
 spring:
   application:
     name: cloud-picture-backend
@@ -12,7 +11,6 @@ spring:
     url: jdbc:mysql://localhost:3306/cloud_picture
     username: root
     password: root
-
 mybatis-plus:
   configuration:
     # 是否自动转为驼峰式
@@ -25,7 +23,7 @@ mybatis-plus:
       logic-delete-field: isDeleted # 逻辑删除字段(默认为 is_deleted)
       logic-delete-value: 1 # 逻辑删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
-
+# Swagger配置
 knife4j:
   enable: true
   openapi:

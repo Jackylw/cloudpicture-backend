@@ -1,4 +1,4 @@
-package top.fexample.cloudpicturebackend.model.dto;
+package top.fexample.cloudpicturebackend.model.dto.user;
 
 import lombok.Data;
 

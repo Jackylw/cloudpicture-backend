@@ -2,6 +2,9 @@ package top.fexample.cloudpicturebackend.common;
 
 import top.fexample.cloudpicturebackend.exception.ErrorCode;
 
+/**
+ * 响应工具类
+ */
 public class ResultUtils {
 
     /**

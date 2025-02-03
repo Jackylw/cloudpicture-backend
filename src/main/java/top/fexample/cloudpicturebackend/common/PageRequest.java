@@ -24,7 +24,7 @@ public class PageRequest {
     private String sortField;
 
     /**
-     * 排序顺序（默认降序）
+     * 排序顺序（默认升序）
      */
     private String sortOrder = "descend";
 }

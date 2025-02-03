@@ -1,10 +1,13 @@
 package top.fexample.cloudpicturebackend.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import top.fexample.cloudpicturebackend.model.dto.user.UserQueryRequest;
 import top.fexample.cloudpicturebackend.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.fexample.cloudpicturebackend.model.vo.LoginUserVO;
-
+import top.fexample.cloudpicturebackend.model.vo.UserVO;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author 19164
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * @createDate 2025-02-01 21:37:47
  */
 public interface UserService extends IService<User> {
+
     /**
      * 用户注册
      *
@@ -27,13 +31,13 @@ public interface UserService extends IService<User> {
      *
      * @param userAccount  用户账户
      * @param userPassword 用户密码
-     * @param request      请求
+     * @param request     请求
      * @return 脱敏后的用户信息
      */
     LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request);
 
     /**
-     * 获取加密密码
+     * 获取加密后的密码
      *
      * @param userPassword 用户密码
      * @return 加密后的密码
@@ -41,20 +45,36 @@ public interface UserService extends IService<User> {
     String getEncryptPassword(String userPassword);
 
     /**
-     * 获取登录用户信息
+     * 获取当前登录用户
+     *
+     * @param request 请求
+     * @return 脱敏后的用户信息
+     */
+    User getLoginUser(HttpServletRequest request);
+
+    /**
+     * 获得脱敏后的登录用户信息
      *
      * @param user 用户
-     * @return 登录用户信息
+     * @return 脱敏后的登录用户信息
      */
     LoginUserVO getLoginUserVO(User user);
 
     /**
-     * 获取当前登录用户
+     * 获得脱敏后的用户信息
      *
-     * @param request 请求
-     * @return 当前登录用户
+     * @param user 用户
+     * @return 脱敏后的用户信息
      */
-    User getLoginUser(HttpServletRequest request);
+    UserVO getUserVO(User user);
+
+    /**
+     * 获得脱敏后的用户信息列表
+     *
+     * @param userList 用户列表
+     * @return 脱敏后的用户列表
+     */
+    List<UserVO> getUserVOList(List<User> userList);
 
     /**
      * 用户注销
@@ -63,4 +83,11 @@ public interface UserService extends IService<User> {
      * @return 是否注销成功
      */
     boolean userLogout(HttpServletRequest request);
+
+    /**
+     * 获取查询条件
+     * @param userQueryRequest 用户查询请求
+     * @return 查询条件
+     */
+    QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
 }
