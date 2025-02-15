@@ -11,6 +11,10 @@ spring:
     url: jdbc:mysql://localhost:3306/cloud_picture
     username: root
     password: root
+  # 开放更大的文件上传体积
+  servlet:
+    multipart:
+      max-file-size: 10MB
 mybatis-plus:
   configuration:
     # 是否自动转为驼峰式
