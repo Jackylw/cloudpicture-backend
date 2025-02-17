@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.multipart.MultipartFile;
 import top.fexample.cloudpicturebackend.model.dto.picture.PictureQueryRequest;
+import top.fexample.cloudpicturebackend.model.dto.picture.PictureReviewRequest;
+import top.fexample.cloudpicturebackend.model.dto.picture.PictureUploadByBatchRequest;
 import top.fexample.cloudpicturebackend.model.dto.picture.PictureUploadRequest;
 import top.fexample.cloudpicturebackend.model.entity.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -21,12 +23,12 @@ public interface PictureService extends IService<Picture> {
     /**
      * 上传图片
      *
-     * @param multipartFile       图片文件
+     * @param inputSource          文件输入源
      * @param pictureUploadRequest 图片上传请求
-     * @param loginUser           登录用户
-     * @return  图片信息
+     * @param loginUser            登录用户
+     * @return 图片信息
      */
-    PictureVO uploadPicture(MultipartFile multipartFile,
+    PictureVO uploadPicture(Object inputSource,
                             PictureUploadRequest pictureUploadRequest,
                             User loginUser);
 
@@ -51,7 +53,7 @@ public interface PictureService extends IService<Picture> {
      * 获取图片信息分页
      *
      * @param picturePage 分页信息
-     * @param request 请求
+     * @param request     请求
      * @return 图片信息分页
      */
     Page<PictureVO> getPictureVOPage(Page<Picture> picturePage, HttpServletRequest request);
@@ -62,4 +64,30 @@ public interface PictureService extends IService<Picture> {
      * @param picture 图片
      */
     void validPicture(Picture picture);
+
+    /**
+     * 图片审核
+     *
+     * @param pictureReviewRequest 图片审核请求
+     * @param loginUser            登录用户
+     */
+    void doPictureReview(PictureReviewRequest pictureReviewRequest, User loginUser);
+
+    /**
+     * 填充审核参数
+     *
+     * @param picture   图片
+     * @param loginUser 登录用户
+     */
+    void fillReviewParams(Picture picture, User loginUser);
+
+    /**
+     * 批量抓取和创建图片
+     *
+     * @param pictureUploadByBatchRequest 图片批量上传请求
+     * @param loginUser                   登录用户
+     * @return 成功创建的图片数
+     */
+    Integer uploadPictureByBatch(PictureUploadByBatchRequest pictureUploadByBatchRequest,
+                                 User loginUser);
 }
