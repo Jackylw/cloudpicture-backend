@@ -2,6 +2,10 @@ server:
   port: 8777
   servlet:
     context-path: /api
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
 spring:
   application:
     name: cloud-picture-backend
@@ -11,6 +15,17 @@ spring:
     url: jdbc:mysql://localhost:3306/cloud_picture
     username: root
     password: root
+  # Redis 配置
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 5000
+  # Session 配置
+  session:
+    store-type: redis
+    # session 30 天后过期
+    timeout: 2592000
   # 开放更大的文件上传体积
   servlet:
     multipart:

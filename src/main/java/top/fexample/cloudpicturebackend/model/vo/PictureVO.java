@@ -20,7 +20,12 @@ public class PictureVO implements Serializable {
     /**  
      * 图片 url  
      */  
-    private String url;  
+    private String url;
+
+    /**
+     * 缩略图 url
+     */
+    private String thumbnailUrl;
   
     /**  
      * 图片名称  
@@ -120,5 +125,5 @@ public class PictureVO implements Serializable {
         // 类型不同，需要转换  
         pictureVO.setTags(JSONUtil.toList(picture.getTags(), String.class));  
         return pictureVO;  
-    }  
+    }
 }
